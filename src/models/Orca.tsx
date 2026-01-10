@@ -6,7 +6,7 @@ export function Orca() {
   return (
     <primitive
       object={scene}
-      position={[0, 1, 0]}
+      position={[0, 4, 8]}
     />
   )
 }

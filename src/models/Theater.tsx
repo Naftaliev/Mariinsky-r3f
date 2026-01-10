@@ -10,7 +10,7 @@ export default function Seats() {
 
     const seatsGroup = useRef<Group>(null!) 
 
-    const gltf = useLoader(GLTFLoader, './models/seats.glb')
+    const gltf = useLoader(GLTFLoader, './models/balcony-test.glb')
 
     useFrame((_ , delta) => {
         const mesh = seatsGroup.current

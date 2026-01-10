@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Canvas camera={{ position: [3, 3, 3], fov: 50 }}>
+      <Canvas camera={{ position: [0, 4, 3], fov: 90 }}>
         <Scene cubeSpeedRef={cubeSpeedRef}/>
       </Canvas>
       <Slider onSpeedChange={handleSpeedChange} /> 

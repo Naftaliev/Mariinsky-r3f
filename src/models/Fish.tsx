@@ -6,8 +6,9 @@ export function Fish() {
   return (
     <primitive
       object={scene}
-      position={[0, 1, 0]}
-       scale={6}
+      position={[0, 2, 8]}
+      scale={6}
+      rotation={[0, Math.PI / -2, 0]}
     />
   )
 }

@@ -1,0 +1,35 @@
+import * as THREE from 'three'
+import { useMemo } from 'react'
+
+export function useChandelierAnchors(gltfObject) {
+  return useMemo(() => {
+    if (!gltfObject) return []
+
+    gltfObject.scene.updateMatrixWorld(true)
+
+    const values = Object.values(gltfObject.nodes)
+    console.log(values) 
+    
+    return Object.values(gltfObject.nodes)
+
+      .filter(
+        (n) =>
+          n.type === 'Object3D' &&
+          n.name.startsWith('chandelierMount')
+      )
+      .map((n) => {
+        console.log(n)
+        const position = new THREE.Vector3()
+        const quaternion = new THREE.Quaternion()
+        const scale = new THREE.Vector3()
+
+        n.matrixWorld.decompose(position, quaternion, scale)
+
+        return {
+          name: n.name,
+          position: position.toArray(),
+          quaternion: quaternion.toArray(),
+        }
+      })
+  }, [gltfObject])
+}

@@ -1,0 +1,43 @@
+import { useGLTF, Instances, Instance } from '@react-three/drei'
+import * as THREE from 'three'
+import { useMemo } from 'react'
+
+function ChandeliersFromAnchors() {
+  const { nodes, materials } = useGLTF('/scene.glb')
+
+  const anchors = useMemo(() => {
+    return Object.values(nodes)
+      .filter(
+        (n) =>
+          n.type === 'Object3D' &&
+          n.name.startsWith('chandelierMount')
+      )
+      .map((n) => {
+        const pos = new THREE.Vector3()
+        const quat = new THREE.Quaternion()
+        const scale = new THREE.Vector3()
+
+        n.matrixWorld.decompose(pos, quat, scale)
+
+        return {
+          position: pos.toArray(),
+          quaternion: quat.toArray(),
+        }
+      })
+  }, [nodes])
+
+  return (
+    <Instances
+      geometry={nodes.Chandelier.geometry}
+      material={materials.Metal}
+    >
+      {anchors.map((a, i) => (
+        <Instance
+          key={i}
+          position={a.position}
+          quaternion={a.quaternion}
+        />
+      ))}
+    </Instances>
+  )
+}

@@ -1,4 +1,4 @@
-import { Stats, OrbitControls, GizmoHelper, GizmoViewport } from "@react-three/drei"
+import { Stats, OrbitControls, GizmoHelper, GizmoViewport,  Grid } from "@react-three/drei"
 import { Perf } from 'r3f-perf'
 import Seats from "../models/Theater"
 import { Fish } from "../models/Fish"
@@ -21,6 +21,12 @@ export default function Scene({cubeSpeedRef}: SceneProps) {
       <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
         <GizmoViewport />
       </GizmoHelper>
+      <axesHelper args={[1.5]} />
+      <Grid
+        args={[10, 10]}
+        position={[0, 0, 0]}
+        infiniteGrid={false}
+      />
       <Perf position="top-right" />
     </>
   )

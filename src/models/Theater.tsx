@@ -3,24 +3,29 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { useRef } from "react"
 import { Group } from "three"
 import { useFrame } from "@react-three/fiber"
+import { useChandelierAnchors } from '../components/chandelierAnchors'
 import * as THREE from "three"
 import { useLayoutEffect } from 'react'
 
 export default function Seats() {
 
-    const seatsGroup = useRef<Group>(null!) 
+    const theaterGroup = useRef<Group>(null!) 
 
-    const gltf = useLoader(GLTFLoader, './models/balcony-test.glb')
+    const theater = useLoader(GLTFLoader, './models/balcony-test.glb')
+
+     const anchors = useChandelierAnchors(theater)
+
+    theater.scene.updateMatrixWorld(true)
 
     useFrame((_ , delta) => {
-        const mesh = seatsGroup.current
+        const mesh = theaterGroup.current
         if (!mesh) return
 
         }
     )
 
     return (
-    <primitive ref={seatsGroup} object={gltf.scene}  position={[0, 0, 0]} scale={1}/>
+    <primitive ref={theaterGroup} object={theater.scene}  position={[0, 0, 5]} scale={1}/>
     )
 
 }

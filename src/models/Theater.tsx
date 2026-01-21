@@ -13,7 +13,9 @@ export default function Seats() {
 
     const theater = useLoader(GLTFLoader, './models/balcony-test.glb')
 
-     const anchors = useChandelierAnchors(theater)
+    const anchors = useChandelierAnchors(theater)
+
+    console.log(anchors)
 
     theater.scene.updateMatrixWorld(true)
 

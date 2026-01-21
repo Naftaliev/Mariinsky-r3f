@@ -8,7 +8,7 @@ export function useChandelierAnchors(gltfObject) {
     gltfObject.scene.updateMatrixWorld(true)
 
     const values = Object.values(gltfObject.nodes)
-    console.log(values) 
+    //console.log(values) 
     
     return Object.values(gltfObject.nodes)
 
@@ -18,7 +18,7 @@ export function useChandelierAnchors(gltfObject) {
           n.name.startsWith('chandelierMount')
       )
       .map((n) => {
-        console.log(n)
+        //console.log(n)
         const position = new THREE.Vector3()
         const quaternion = new THREE.Quaternion()
         const scale = new THREE.Vector3()

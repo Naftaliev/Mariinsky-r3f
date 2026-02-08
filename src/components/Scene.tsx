@@ -1,21 +1,28 @@
-import { Stats, OrbitControls, GizmoHelper, GizmoViewport,  Grid } from "@react-three/drei"
+import { Stats, OrbitControls, GizmoHelper, GizmoViewport,  Grid, useGLTF } from "@react-three/drei"
 import { Perf } from 'r3f-perf'
 import Seats from "../models/Theater"
 import { Fish } from "../models/Fish"
 import { Orca } from "../models/Orca"
+import { ChandelierInstances } from "./ChandelierInstances.tsx"
+import { useChandelierAnchors } from "./useChandelierAnchors.tsx"
 
-type SceneProps = {
-  cubeSpeedRef: React.MutableRefObject<number>
-}
 
-export default function Scene({cubeSpeedRef}: SceneProps) {
+
+
+export default function Scene() {
+
+  const theaterGltf = useGLTF('/models/balcony-test.glb')
+
+  const anchorsArray = useChandelierAnchors(theaterGltf)
+
   return (
     <>
       <ambientLight intensity={0.8} />
       <directionalLight position={[5, 5, 5]} />
-      <Seats cubeSpeedRef={cubeSpeedRef}/>
-      <Fish />
-      <Orca />
+      <Seats theaterModel={theaterGltf}/>
+      <ChandelierInstances anchorsArray={anchorsArray} />
+      {/* <Fish />
+      <Orca /> */}
       <OrbitControls />
       <Stats />
       <GizmoHelper alignment="bottom-right" margin={[80, 80]}>

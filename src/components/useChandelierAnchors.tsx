@@ -4,11 +4,8 @@ import { useMemo } from 'react'
 export function useChandelierAnchors(gltfObject) {
   return useMemo(() => {
     if (!gltfObject) return []
-
+  
     gltfObject.scene.updateMatrixWorld(true)
-
-    const values = Object.values(gltfObject.nodes)
-    //console.log(values) 
     
     return Object.values(gltfObject.nodes)
 

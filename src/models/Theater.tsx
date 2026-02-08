@@ -20,7 +20,7 @@ export default function Seats( {theaterModel}: Props ) {
     )
 
     return (
-    <primitive ref={theaterGroup} object={theaterModel.scene}  position={[0, 0, 5]} scale={1}/>
+    <primitive ref={theaterGroup} object={theaterModel.scene}  position={[0, 0, 0]} scale={1}/>
     )
 
 }

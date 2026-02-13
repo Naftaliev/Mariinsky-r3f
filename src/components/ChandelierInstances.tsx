@@ -35,7 +35,7 @@ export function ChandelierInstances(anchorsProp) {
 
   const chandelierParts = [goldPart,emissivePart, candlesPart, dropsPart]
 
-  useGLTF.preload('/chandelierMini.glb')
+  useGLTF.preload('models/chandelierMini.glb')
 
   return chandelierParts.map((part) => {
     return (

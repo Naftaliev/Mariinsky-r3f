@@ -5,6 +5,9 @@ import { Fish } from "../models/Fish"
 import { Orca } from "../models/Orca"
 import { ChandelierInstances } from "./ChandelierInstances.tsx"
 import { useChandelierAnchors } from "./useChandelierAnchors.tsx"
+import { ChairInstances } from "./ChairInstances.tsx"
+import { useChairAnchors } from "./useChairAnchors.tsx"
+
 
 
 
@@ -13,14 +16,16 @@ export default function Scene() {
 
   const theaterGltf = useGLTF('/models/balcony-test.glb')
 
-  const anchorsArray = useChandelierAnchors(theaterGltf)
+  const chandelierAnchorsArray = useChandelierAnchors(theaterGltf)
+  const chairAnchorsArray = useChairAnchors(theaterGltf)
 
   return (
     <>
       <ambientLight intensity={0.8} />
       <directionalLight position={[5, 5, 5]} />
       <Seats theaterModel={theaterGltf}/>
-      <ChandelierInstances anchorsArray={anchorsArray} />
+      <ChandelierInstances anchorsArray={chandelierAnchorsArray} />
+      <ChairInstances anchorsArray={chairAnchorsArray} />
       {/* <Fish />
       <Orca /> */}
       <OrbitControls />
